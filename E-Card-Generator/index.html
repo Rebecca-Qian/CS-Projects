@@ -5,10 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>E-Card Generator</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -20,26 +21,164 @@
     <title>E-Card Generator</title>
   </head>
   <body>
-    <h2 class="text-center">Custom E-Card Generator</h2>
-    <p class="text-center">Brighten someone's day with a custom E-Card!</p>
+    <header>
+      <!-- Navigation bar -->
+      <nav id="header-nav" class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <div class="navbar-brand" class="text-center">
+              <ul class="nav navbar-nav visible-lg visible-md visible-sm">
+                <li><a href="">Why E-Cards?</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Contact Us</a></li>
+              </ul>
+            </div>
+            <!-- for collapsible menu on smaller screen sizes -->
+            <button id="button" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsable-nav" aria-expanded="false">
+              <span class="sr-only">Start Navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+        </div>
+
+        <div id="collapsable-nav" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right visible-xs">
+            <li class="text-center"><a href="">Why E-Cards?</a></li>
+            <li class="text-center"><a href="">About</a></li>
+            <li class="text-center"><a href="">Contact Us</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
     <div class="container-fluid">
-    	<div class="col-md-3 col-lg-3">
-	    	<ul>
-	    		<li>Birthday</li>
-	    		<li>Christmas</li>
-	    		<li>Get Well Soon</li>
-	    		<li>New Year</li>
-	    		<li>Valentine's Day</li>
-	    	</ul>
-	    </div>
-	    <div class="col-md-3 col-lg-3">
-	    	<img src="http://d30nr4b2k915ua.cloudfront.net/wp-content/uploads/2016/02/11101716/doug-money-600x429.jpg" />
-	    </div>
+      <a href="index.html"><h2 id="title" class="text-center">Custom E-Card Generator</h2></a>
+      <p class="text-center">Brighten someone's day with a custom Doug E-Card!</p>
+      <div class="row">
+        <!-- first 1/4 of the page is list of E-Card categories -->
+        <div class="col-md-3 col-sm-4 col-xs-12">
+          <div id="holidays">
+            <h4>Holidays</h4>
+      	    	<ul>
+      	    		<li><a href="">Birthday</a></li>
+      	    		<li><a href="">Christmas</a></li>
+      	    		<li><a href="">Get Well Soon</a></li>
+      	    		<li><a href="">New Year</a></li>
+      	    		<li><a href="">Valentine's Day</a></li>
+                <li><a href="">July 4th</a></li>
+                <li><a href="">St. Patrick's Day</a></li>
+                <li><a href="">Chinese New Year</a></li>
+                <li><a href="">Congratulations</a></li>
+                <li><a href="">I'll Miss You</a></li>
+                <li><a href="">Happy Anniversary</a></li>
+      	    	</ul>
+      	 </div>
+        </div>
+        <!-- middle 1/2 of the page -->
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <!-- first row is Carousel -->
+          <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+            <!-- Carousel setup -->
+            <ol class="carousel-indicators">
+              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel" data-slide-to="1"></li>
+              <li data-target="#myCarousel" data-slide-to="2"></li>
+              <li data-target="#myCarousel" data-slide-to="3"></li>
+            </ol>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+              <div class="item active">
+                <img src="http://d30nr4b2k915ua.cloudfront.net/wp-content/uploads/2016/02/11101716/doug-money-600x429.jpg" alt="pug" class="ecard">
+              </div>
+
+            <div class="item">
+              <img src="http://www.weloveallanimals.com/wp-content/uploads/2016/02/doug.png" alt="pug" class="ecard">
+            </div>
+
+            <div class="item">
+              <img src="http://66.media.tumblr.com/0ba3566ab778bb7cd999d7eaedc9a773/tumblr_nmpbmvdlQs1u2cmuko1_1280.jpg" alt="pug" class="ecard">
+            </div>
+
+            <div class="item">
+              <img src="http://65.media.tumblr.com/c7166b2791a7263b081307e0b7c71254/tumblr_nmlelcQ1Xd1u2cmuko1_1280.jpg" alt="pug" class="ecard">
+            </div>
+          </div>
+
+          <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+      </div>
+
+      <!-- Second row is customization -->
+      <div class="row">
+        <p>Choose a font</p>
+        <div id="changefont"></div>
+        <!--div style="height: 500px; width: 100%; display: inline-block;"></div-->
+      </div>
+
+      <div class="row">
+      <form>
+            <div>
+              <p >Name:</p>
+              <input type="text" name="Your Name" value="Your Name" class="form-control">
+            </div>
+            <div>
+              <p>Email:</p>
+              <input type="text" name="Your Email" value="Your Email" class="form-control">
+            </div>
+            <div>
+              <p>To:</p>
+              <input type="text" name="Recipient's Email" value="Recipient's Email" class="form-control">
+            </div>
+            <div>
+              <p>Message:</p>
+              <input type="text" name="Message" value="leave a message" class="form-control">
+            </div>
+            <div>
+              <input type="button" value="SEND">
+            </div>
+          </form>
+        </div>
     </div>
+    
+    <!-- Image preview -->
+    <div class="col-md-3 col-sm-4 col-xs-12">
+      <div class="row">
+          <div class="preview">
+            <div class="thumbnail">
+               <img src="http://d30nr4b2k915ua.cloudfront.net/wp-content/uploads/2016/02/11101716/doug-money-600x429.jpg" alt="pug" width="100%" href="">
+            </div>
+            <div class="thumbnail">
+               <img src="http://d30nr4b2k915ua.cloudfront.net/wp-content/uploads/2016/02/11101716/doug-money-600x429.jpg" alt="pug" width="100%">
+            </div>
+            <div class="thumbnail">
+               <img src="http://d30nr4b2k915ua.cloudfront.net/wp-content/uploads/2016/02/11101716/doug-money-600x429.jpg" alt="pug" width="100%">
+            </div>
+            <div class="thumbnail">
+               <img src="http://d30nr4b2k915ua.cloudfront.net/wp-content/uploads/2016/02/11101716/doug-money-600x429.jpg" alt="pug" width="100%">
+            </div>
+          </div>
+        </div>
+    </div>
+
+     
+     
+    </div>
+
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/form.js"></script>
+
   </body>
 </html>

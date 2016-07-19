@@ -1,0 +1,16 @@
+.ecard, .carousel-inner {
+  width: 100%;
+  border: 1px solid black;
+  height: 350px;
+  /* border-sizing: border-box;*/
+}
+
+#myCarousel {
+  width: 100%;
+  height: 350px;
+}
+
+.thumbnail {
+  display: inline-block;
+  width: 25%;
+}

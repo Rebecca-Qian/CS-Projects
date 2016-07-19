@@ -25,13 +25,17 @@ elClose.addEventListener('click', dismissNote, false);*/
 
 //document.body.removeChild(elNote);
 
-var elMsg = document.getElementbyId("changefont");
+document.addEventListener("click", insertText);
+
+//document.getElementbyId('edit').addEventListener("click", insertText);
 
 function insertText() {
-  elMsg.innerHTML = "<p>hello</p>";
+	document.getElementById("changefont").innerHTML = "Hello World";
 }
 
-/*var textArea = document.getElementbyId('title');
-testArea.addEventListener('click', insertText, false);*/
+/*var textArea = document.getElementbyId("title");
+testArea.addEventListener("click", insertText, false);*/
 
-document.getElementbyId("title").addEventListener("click", insertText, false);
+/*document.addEventListener("click", insertText, false);*/
+
+//document.getElementbyId("title").addEventListener("click", insertText, false);

@@ -31,6 +31,16 @@ function insertText() {
 	document.getElementById("changefont").innerHTML = "Hello World";
 }
 
+// var greet = document.getElementById("greetingBox");
+// greet.addEventListener("click", insertGreeting);
+
+// function insertGreeting() {
+// 	greet.textContent = "";
+// }
+
+//var greetInput = document.getElementById("greetingText");
+//greetInput.addEventListener("")
+
 // Removes the text in the form box
 
 /*var nameInput = document.getElementById("name");
@@ -66,7 +76,7 @@ testArea.addEventListener("click", insertText, false);*/
 
 //document.getElementbyId("title").addEventListener("click", insertText, false);
 
-$("#emailForm").submit(function(event)){
+/*$("#emailForm").submit(function(event)){
 	event.preventDefault() //cancels submission
 	sendEmail();
 });
@@ -96,5 +106,5 @@ function sendEmail() {
 function submitSuccess(){
 	// If successfully sent, remove hidden class and show message
 	$("messageSent").removeClass("hidden");
-}
+}*/
 

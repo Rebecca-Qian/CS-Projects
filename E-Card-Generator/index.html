@@ -55,7 +55,7 @@
 
     <!-- Main Content -->
     <div class="container-fluid">
-      <a href="index.html"><h2 id="title" class="text-center">Custom E-Card Generator</h2></a>
+      <a href="index.html"><h1 id="title" class="text-center">Custom E-Card Generator</h1></a>
       <p class="text-center">Brighten someone's day with a custom Doug E-Card!</p>
       <div class="row">
         <!-- first 1/4 of the page is list of E-Card categories -->
@@ -80,7 +80,11 @@
         <!-- middle 1/2 of the page -->
         <div class="col-md-6 col-sm-6 col-xs-12">
           <!-- first row is Carousel -->
+
+          <div id="greetingBox"><p id="greetingText" contenteditable="true">Your Message Here</p></div>
+
           <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+            
             <!-- Carousel setup -->
             <ol class="carousel-indicators">
               <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -89,6 +93,7 @@
               <li data-target="#myCarousel" data-slide-to="3"></li>
             </ol>
             <!-- Wrapper for slides -->
+
             <div class="carousel-inner" role="listbox">
               <div class="item active">
                 <img src="http://d30nr4b2k915ua.cloudfront.net/wp-content/uploads/2016/02/11101716/doug-money-600x429.jpg" alt="pug" class="ecard">

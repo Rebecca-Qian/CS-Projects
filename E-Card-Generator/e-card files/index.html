@@ -79,23 +79,27 @@
         </div>
         <!-- middle 1/2 of the page -->
         <div class="col-md-6 col-sm-6 col-xs-12">
-
-<<<<<<< HEAD
           <!-- first row is Carousel -->
-          <div id="textBox">
-=======
+
           <!-- <div id="greetingBox"><p id="greetingText" contenteditable="true">Your Message Here</p></div> -->
           <!-- <textarea rows="10" cols="100">
           Type your personal message here!
           </textarea>
           -->
 
-           <div id="textBox">
->>>>>>> b69cf29207202b76debe7a4e11fcf1c2630f1a18
-          <div id="greetingBox"><p id="greetingText" contenteditable="true">Your Message Here</p></div></div>
+              <div>
+                <textarea id="txtEditor"></textarea>
+              </div> 
 
-
-          
+          <button type = "button" class="formatting button" aria-label="Italics">
+            <span class="glyphicon glyphicon-italic"></span>
+          </button>
+          <button type = "button" class="formatting button" aria-label="Bold">
+            <span class="glyphicon glyphicon-bold"></span>
+          </button>
+          <button type = "button" class="formatting button" aria-label="Italics">
+            <span class="glyphicon glyphicon-italic"></span>
+          </button>
           <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
             
             <!-- Carousel setup -->
@@ -137,6 +141,7 @@
 
       <!-- Second row is customization -->
       <div class="row">
+        <p>Choose a font</p>
         <div id="changefont"></div>
         <!--div style="height: 500px; width: 100%; display: inline-block;"></div-->
       </div>
@@ -144,29 +149,21 @@
       <div class="row">
       <form id="emailForm">
             <div>
-              <p >From:</p>
+              <p >Name:</p>
               <input id="name" type="text" name="Your Name" placeholder="Your Name" class="form-control">
             </div>
             <div>
-              <p>Your e-mail:</p>
-              <input id="email" type="text" name="Your e-mail" placeholder="Your e-mail" class="form-control">
+              <p>Email:</p>
+              <input id="email" type="text" name="Your Email" placeholder="Your Email" class="form-control">
             </div>
             <div>
               <p>To:</p>
-              <input id="to" type="text" name="Recipient's Name" placeholder="Recipient's Name" class="form-control">
-            </div>
-            <div>
-              <p>Recipient's e-mail:</p>
-              <input id="to" type="text" name="Recipient's e-mail" placeholder="Recipient's e-mail" class="form-control">
+              <input id="to" type="text" name="Recipient's Email" placeholder="Recipient's Email" class="form-control">
             </div>
             <div>
               <p>Message:</p>
-           
+              <input id="message" type="text" name="Message" placeholder="leave a message" class="form-control">
             </div>
-            <div>
-            	<textarea id="txtEditor"></textarea>
-       		</div> 
-
             <div>
               <input type="button" value="SEND">
             </div>
@@ -197,24 +194,22 @@
         </div>
     </div>
 
+     
+     
     </div>
 
 
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <!-- <script src="jquery.js"</script> -->
-
+    <script src="jquery.js"</script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-
-
     <script src="js/bootstrap.min.js"></script>
     <script src="js/form.js"></script>
     
     <!-- JQuery text box Plug-in -->   
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="js/editor.js"></script>
+    <script src="editor.js"></script>
     <script type="text/javascript">
       $(document).ready(function() {
       $("#txtEditor").Editor()
@@ -222,7 +217,7 @@
     </script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link href="CSS/editor.css" type="text/css" rel="stylesheet"/>
+    <link href="editor.css" type="text/css" rel="stylesheet"/>
   
   </body>
 </html>

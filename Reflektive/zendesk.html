@@ -1,6 +1,6 @@
+<div class="intro-title">What do you need help with?</div>
 <section id="search-section" class="hero-unit search-box">
   <div class="container-inner">
-    <div class="intro-title">What do you need help with?</div>
   {{search}}
   </div>
 </section>
@@ -10,128 +10,197 @@
 
 <section class="knowledge-base">
   {{#if categories}}
-    <div class="category-tree">
+    <div class="category-tree"> 
+      <!--div class="journey-row">
+      <!-- Start of Admin, Manager and Employee Journeys -->
       {{#each categories}}
-          {{#if ../has_multiple_categories}}
-      		
-              
-          	{{#is name "Admin (HIDDEN)"}}
-      				<div class="category-button">
-        <!--section class="category category-button"-->
-              	<h2 class="button-title"><a href="{{url}}">{{name}}</a></h2>
-        			</div>
-            {{/is}}
-     
-            {{#is name "Manager (HIDDEN)"}}
-      				<div class="category-button">
-              	<h2 class="button-title"><a href="{{url}}">{{name}}</a></h2>
-           		</div> 
-        		{{/is}}
+        {{#if ../has_multiple_categories}}  
+          
+          <!-- This is the Admin Journey Category -->
+          {{#is name "Admin (HIDDEN)"}}
+            <!-- Journey box contains button and links at bottom -->
+            <section class="journey">
+              <!-- Button -->
+              <a class="category-button" href="{{url}}">
+                <h2 class="button-title">{{name}}</h2>
+              </a>
+              <!-- Promoted articles -->
+              <div class="FAQs">
+              {{#if sections}}
+                {{#each sections}}
+                  <!-- Only finds articles from the first Section -->
+                  {{#is name "Real-Time Feedback"}}
+                    {{#if articles}}
+                      {{#each articles}}
+                        {{#if promoted}}
+                          <div><span id="star" data-title="{{t 'promoted'}}">★</span>
+                            <a href="{{url}}">{{title}}</a></div>
+                        {{/if}}    
+                      {{/each}}
+                    {{/if}}
+                  {{/is}}
+                {{/each}}
+              {{/if}}
+              </div>
+            </section>
+          {{/is}}
+          
+          <!-- This is the Manager Journey Category -->
+          {{#is name "Manager (HIDDEN)"}}
+            <section class="journey">
+              <a class="category-button" href="{{url}}">
+                <h2 class="button-title">{{name}}</h2>
+              </a> 
+              <div class="FAQs">
+              {{#each sections}}
+                {{#is name "Real-Time Feedback"}}
+                  {{#if articles}}
+                    {{#each articles}}
+                      {{#if promoted}}
+                        <span id="star" data-title="{{t 'promoted'}}">★</span>
+                        <a href="{{url}}">{{title}}</a>
+                      {{/if}}
+                    {{/each}}
+                  {{/if}}
+                {{/is}}
+              {{/each}}
+              </div>
+            </section>
+            
+          {{/is}}
         
-            {{#is name "Employee (HIDDEN)"}}
-      				<div class="category-button">
-              	<h2 class="button-title"><a href="{{url}}">{{name}}</a></h2>
-      				</div>
-            {{/is}}
-      			
-          {{/if}}
+          <!-- This is the Employee Journey Category -->
+          {{#is name "Employee (HIDDEN)"}}
+            <section class="journey">
+              <a class="category-button" href="{{url}}">
+                <h2 class="button-title">{{name}}</h2>
+              </a>
+              <div class="FAQs">
+              {{#each sections}}
+                {{#is name "Real-Time Feedback"}}
+                  {{#if articles}}
+                    {{#each articles}}
+                      {{#if promoted}}
+                        <span id="star" data-title="{{t 'promoted'}}">★</span>
+                        <a href="{{url}}">{{title}}</a>
+                      {{/if}}  
+                    {{/each}}
+                  {{/if}}
+                {{/is}}
+              {{/each}}
+              </div>
+            </section>
+          {{/is}}
+          
+        {{/if}}
       {{/each}}
+  <!--/div>
+      <!-- end of all 3 journeys -->
       
+      <!-- Start of Resources and Announcements area -->
       {{#each categories}}
-      
-      	{{#is name "Announcements (HIDDEN)"}}
-      		<h2><a href="{{url}}">{{name}}</a></h2>
-     
-      		{{#each sections}}
-      			<section class="section">
-      				<h3>
-                {{#if internal}}
-                  <span class="visibility-internal" data-title="{{t 'internal'}}">
-                    <span class="visibility-internal-icon"></span>
-                  </span>
-                {{/if}}
-               	<a id="homepage-section" href="{{url}}">{{name}}</a>
-              </h3>
+        <!-- Announcements category -->
+        {{#is name "Announcements (HIDDEN)"}}
+          <div id="announcements">
+            <h2><a href="{{url}}">{{name}}</a></h2>
+            <!-- Sections under Announcements -->
+            {{#each sections}}
+              <section class="section">
+                <h3>
+                  <!-- Checks if this is an internal section -->
+                  {{#if internal}}
+                    <span class="visibility-internal" data-title="{{t 'internal'}}">
+                      <span class="visibility-internal-icon"></span>
+                    </span>
+                   {{/if}}
+                  <a id="homepage-section" href="{{url}}">{{name}}</a>
+                </h3>
       <!-- /section -->
-       
-              {{#if articles}}
-                <ul class="article-list">
-                  {{#each articles}}
-                    <li {{#if promoted}} class="article-promoted" {{/if}}>
-                      {{#if promoted}}
-                        <span data-title="{{t 'promoted'}}">★</span>
-                      {{/if}}
-                      <a href="{{url}}">{{title}}</a>
-                    </li>
-                  {{/each}}
-                </ul>
+                <!-- Articles under each section -->
+                {{#if articles}}
+                  <ul class="article-list">
+                    {{#each articles}}
+                      <li {{#if promoted}} class="article-promoted" {{/if}}>
+                        <!-- Checks for promoted articles -->
+                        {{#if promoted}}
+                          <span data-title="{{t 'promoted'}}">★</span>
+                        {{/if}}
+                        <a href="{{url}}">{{title}}</a>
+                      </li>
+                    {{/each}}
+                  </ul>
+                
+                <!-- If there are hidden articles, "Show all articles">
+                <!-- NOTE: comment out this section if you don't want that button to show -->
                 {{#if more_articles}}
                   <a href="{{url}}" class="see-all-articles">
                     {{t 'show_all_articles' count=article_count}}
                   </a>
                 {{/if}}
-              {{else}}
-                <i class="section-empty">
-                  <a href="{{url}}">{{t 'empty'}}</a>
-                </i>
+                {{else}}
+                  <i class="section-empty">
+                    <a href="{{url}}">{{t 'empty'}}</a>
+                  </i>
               {{/if}}
             <!-- /section -->
-          {{else}}
-            <i class="category-empty">
-              <a href="{{url}}">{{t 'empty'}}</a>
-            </i>
-          {{/each}}
-
+              {{else}}
+                <i class="category-empty">
+                  <a href="{{url}}">{{t 'empty'}}</a>
+                </i>
+            {{/each}}
+                
+          <!-- checks whether there are more sections under Announcements -->
           {{#if more_sections}}
             <div>
               <a href="{{url}}">{{t 'see_all_sections'}}</a>
             </div>
           {{/if}}
         </section>
- 			{{/is}}
+      {{/is}}
+     </div>
       
-      
+      <!-- General Resources Category -->
       {{#is name "General Resources (HIDDEN)"}}
-      		<h2><a href="{{url}}">{{name}}</a></h2>
-     
-      		{{#each sections}}
-      			<section class="section">
-      				<h3>
+        <div id="resources">
+          <h2><a href="{{url}}">{{name}}</a></h2>
+          {{#each sections}}
+            <section class="section">
+              <h3>
                 {{#if internal}}
-                  <span class="visibility-internal" data-title="{{t 'internal'}}">
-                    <span class="visibility-internal-icon"></span>
-                  </span>
+                   <span class="visibility-internal" data-title="{{t 'internal'}}">
+                     <span class="visibility-internal-icon"></span>
+                   </span>
                 {{/if}}
-               	<a id="homepage-section" href="{{url}}">{{name}}</a>
-              </h3>
+                  <a id="homepage-section" href="{{url}}">{{name}}</a>
+              </h3>    
       <!-- /section -->
        
               {{#if articles}}
-                <ul class="article-list">
-                  {{#each articles}}
-                    <li {{#if promoted}} class="article-promoted" {{/if}}>
-                      {{#if promoted}}
-                        <span data-title="{{t 'promoted'}}">★</span>
-                      {{/if}}
-                      <a href="{{url}}">{{title}}</a>
-                    </li>
-                  {{/each}}
-                </ul>
-                {{#if more_articles}}
-                  <a href="{{url}}" class="see-all-articles">
-                    {{t 'show_all_articles' count=article_count}}
-                  </a>
-                {{/if}}
+                 <ul class="article-list">
+                   {{#each articles}}
+                     <li {{#if promoted}} class="article-promoted" {{/if}}>
+                       {{#if promoted}}
+                         <span data-title="{{t 'promoted'}}">★</span>
+                       {{/if}}
+                       <a href="{{url}}">{{title}}</a>
+                     </li>
+                   {{/each}}
+                 </ul>
+               {{#if more_articles}}
+                 <a href="{{url}}" class="see-all-articles">
+                   {{t 'show_all_articles' count=article_count}}
+                 </a>
+               {{/if}}
               {{else}}
-                <i class="section-empty">
-                  <a href="{{url}}">{{t 'empty'}}</a>
-                </i>
-              {{/if}}
-            <!-- /section -->
-          {{else}}
-            <i class="category-empty">
-              <a href="{{url}}">{{t 'empty'}}</a>
-            </i>
+                 <i class="section-empty">
+                   <a href="{{url}}">{{t 'empty'}}</a>
+                 </i>
+             {{/if}}
+           <!-- /section -->
+            {{else}}
+               <i class="category-empty">
+                 <a href="{{url}}">{{t 'empty'}}</a>
+               </i>
           {{/each}}
 
           {{#if more_sections}}
@@ -140,22 +209,23 @@
             </div>
           {{/if}}
         </section>
- 			{{/is}}
-      
-     {{/each}}
+      </div>
+    {{/is}}
+  {{/each}}
 
-      {{pagination}}
+  {{pagination}}
       
     </div>
   {{/if}}
 </section>
 
-<section class="community">
-  {{#if help_center.community_enabled}}
+<!-- IF community featured is enabled (commented out for now -->
+<!--section class="community">
+  {{!{{#if help_center.community_enabled}}
     <h4>
-      {{t 'community'}}
-      {{link 'community'}}
+      {{!{{t 'community'}}
+      {{!{{link 'community'}}
     </h4>
-    {{recent_activity scope='community'}}
-  {{/if}}
-</section>
+    {{!{{recent_activity scope='community'}}
+  {{!{{/if}}
+</section-->

@@ -7,11 +7,13 @@
 }
 
 html {
-  background-color: $color_2;
+  /*background-color: $color_2;*/
+  background-color: #f1f2f2;
 }
 
 body {
-  color: $color_4;
+  /*color: $color_4; */
+  color: #f1f2f2;
   font-family: $font_1;
   font-size: 13px;
   font-weight: lighter;
@@ -34,12 +36,14 @@ figure > img {
 }
 
 a {
-  color: $color_5;
+  /*color: $color_5;*/
+  color: #566bb3;
   font-family: $font_2;
   text-decoration: none;
 }
 a:hover {
-  text-decoration: underline;
+  /*text-decoration: underline;*/
+  color: #607ab9;
 }
 
 ul, ol {
@@ -562,7 +566,7 @@ body.community-enabled .knowledge-base, body.community-enabled .community {
   display: inline-block;
   vertical-align: top;
 }
-body.community-enabled .knowledge-base {
+/*body.community-enabled*/ .knowledge-base {
   width: 620px;
 }
 
@@ -1636,12 +1640,13 @@ body.community-enabled .knowledge-base {
   display: none;
 }
 
-body.community-enabled .search-results-column {
+/* commented out for community enabling */
+/*body.community-enabled*/ .search-results-column {
   display: inline-block;
   vertical-align: top;
   width: 450px;
 }
-body.community-enabled .search-results-column + .search-results-column {
+/*body.community-enabled*/ .search-results-column + .search-results-column {
   margin-left: 35px;
 }
 [dir=rtl] body.community-enabled .search-results-column + .search-results-column {
@@ -1888,44 +1893,146 @@ body.community-enabled .search-results-column + .search-results-column {
 
 /* custom edits */
 .container-inner {
-    max-width: 1100px;
+    width: 100%;
+  /* max-width: 1100px;*/
     margin: 0 auto;
 }
 
 #search-section {
-  background-color: #00a3cc;
-  margin-left: -20px; 
-  width: 120%;
+  /*background-color: #566bb3;*/
+  margin: 0;
+  width: 100%;
 }
 
 .intro-title {
-    font-size: 38px;
-    font-weight: normal;
-      line-height: 1.1;
-  color: white;
-    text-align: center;
-    margin-bottom: 26px;
+  font-size: 38px;
+  font-weight: normal;
+  line-height: 1.1;
+  /*color: #f1f2f2;*/
+  color: #566bb3;
+  text-align: center;
+  /*margin-bottom: 26px;*/
+  margin: 0;
+  margin-bottom: -60px;
+  padding: 0;
+  padding-top: 30px;
+   width: 100%;
   box-sizing: border-box;
-      display: block;
+  display: block;
+  /*background-color: #566bb3;*/
+  position: relative;
+  z-index: 100;
 }
 
 .category-button {
   display: inline-block;
-  background-color: white;
-  border: 2px solid #00a3cc;
-  width: 30%;
+  background-color: #f1f2f2;
+  border: 2px solid #566bb3;
+  width: 100%;
   height: 200px;
-  margin: 1.5%;
+  /*margin: 1.5%;*/
   padding: 0;
+  border-radius: 25px;
+  margin-bottom: 5%;
+  margin-top: 0;
+  box-sizing: border-box;
+}
+
+.category-button:hover {
+  color: white;
+  background-color: #607ab9;
 }
 
 .button-title {
-  color: #00a3cc;
+  /*color: #566bb3;*/
   text-align: center;
   margin-top: 30%;
   padding: 0;
+  color: #566bb3;
+}
+
+.category-button:hover .button-title {
+  color: white;
 }
 
 #buttons-section {
   width: 100%;
+}
+
+#announcements, #resources {
+  margin-left: 10px;
+}
+
+#sections {
+  /*border: 2px solid #566bb3;*/
+  width: 20%;
+  color: #566bb3;
+  margin: 5px;
+  padding: 0px;
+  height: 250px;
+}
+
+#section-name {
+  color: #566bb3;
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  text-align: center;
+  z-index: 100;
+  height: 100px;
+  margin: 0;
+  padding: 5%;
+  padding-top: 15%;
+  border: 2px solid #566bb3;
+  border-radius: 20px;
+ /* margin-left: 10%;*/
+/* margin-left: 5%;
+  padding: 0;
+  padding-top: 10%;*/
+}
+
+#name-box {
+  width: 100%;
+}
+
+#section-name:hover {
+  color: white;
+  background-color: #607ab9;
+}
+
+#description {
+  padding-top: 5px;
+  position: relative;
+  padding-left: 1%;
+}
+
+#star {
+  color: #607ab9;
+  display: inline-block;
+}
+
+.journey {
+  display: inline-block;
+  position: relative;
+  padding: 0;
+  width: 30%;
+  margin: 1.5%;
+  height: 300px;
+  vertical-align: top;
+}
+
+.journey-row {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 700px;
+}
+
+.FAQs {
+  width: 90%;
+  height: 100px;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  display: inline-block;
 }

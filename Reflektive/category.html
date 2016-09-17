@@ -1,0 +1,100 @@
+<div class="category-container">
+<nav class="sub-nav">
+  {{breadcrumbs}}
+  {{search}}
+</nav>
+
+  <h1 class="page-header"><b>Support for {{category.name}}s</b></h1>
+
+{{#is category.description "persona"}}
+
+  <div class="section-tree">
+    {{#each sections}}
+     <section id="sections" class="section">
+       <a id="name-box" href="{{url}}">
+            <h3>
+          {{#if internal}}
+            <span class="visibility-internal" data-title="{{t 'internal'}}">
+              <span class="visibility-internal-icon"></span>
+            </span>
+          {{/if}}
+          <p id="section-name">{{name}}</p>
+        </h3>
+            </a>
+        <!--p id="description">{{!{{description}}</p-->
+
+       {{#if articles}}
+        {{#each articles}}
+          {{#if promoted}}
+              <div>
+              <span data-title="{{t 'promoted'}}">★</span>
+              <a class="colorBlack" href="{{url}}">{{title}}</a>
+              </div>
+          {{/if}}
+        {{/each}}
+     {{/if}}
+                      
+     
+      {{!{{#if articles}}
+        <!--ul class="article-list">
+          {{!{{#each articles}}
+            <li {{!{{#if promoted}} class="article-promoted" {{!{{/if}}>
+             {{! {{#if promoted}}
+                <span data-title="{{!{{t 'promoted'}}">★</span>
+             {{! {{/if}}
+              <a href="{{!{{url}}">{{!{{title}}</a>
+            </li>
+         {{! {{/each}}
+          {{!{{#if more_articles}}
+            <a href="{{!{{url}}" class="see-all-articles">
+             {{! {{t 'show_all_articles' count=article_count}}
+            </a>
+          {{!{{/if}}
+        </ul>
+      {{!{{else}}
+        <i class="section-empty">
+          <a href="{{!{{url}}">{{!{{t 'empty'}}</a>
+        </i-->
+      {{!{{/if}}
+      	</section>
+      
+  {{!{{else}}
+    <!--i class="category-empty">
+      <a href="{{!{{category.url}}">{{!{{t 'empty'}}</a>
+    </i-->
+  		{{/each}}
+		</div>
+	{{/is}}
+  
+  {{#is category.description "other"}}
+  	<div class="section-tree">
+    {{#each sections}}
+     <section class="section">
+       <a href="{{url}}">
+            <h3>
+          {{#if internal}}
+            <span class="visibility-internal" data-title="{{t 'internal'}}">
+              <span class="visibility-internal-icon"></span>
+            </span>
+          {{/if}}
+          <p>{{name}}</p>
+        </h3>
+       </a>
+        <!--p id="description">{{!{{description}}</p-->
+
+       {{#if articles}}
+        {{#each articles}}
+        	<li {{#if promoted}} class="article-promoted" {{/if}}>
+             {{#if promoted}}
+                <span data-title="{{t 'promoted'}}">★</span>
+             {{/if}}
+              <a href="{{url}}">{{title}}</a>
+            </li>
+        {{/each}}
+     {{/if}}
+       </section>
+      {{/each}}
+  </div>
+   {{/is}}
+  	
+</div>

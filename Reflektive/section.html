@@ -1,0 +1,203 @@
+<div class="category-container">
+<nav class="sub-nav">
+  {{breadcrumbs}}
+  {{search}}
+</nav>
+
+<header>
+  <h1 class="page-header">
+    {{#if section.internal}}
+      <span class="visibility-internal" data-title="{{t 'internal'}}">
+        <span class="visibility-internal-icon"></span>
+      </span>
+    {{/if}}
+    {{section.name}} <!-- This is the section title -->
+  </h1>
+  <span>{{subscribe}}</span>
+</header>
+
+<!--p>{{!{{section.description}}</p--> <!-- description under title -->
+
+{{#is section.name "Utilizing Check-Ins for Development"}}
+<a href="http://support.reflektive.com/hc/en-us/articles/204243839-What-is-a-Performance-Review-">Shared article</a>
+{{/is}}
+
+<!-- all sections for Admin -->
+{{#is section.description "admin"}}
+	{{#is section.name "Real-Time Feedback"}}
+		{{!{{#if section.articles}}
+  	<!-- the Implementation sub-section -->
+  <div class="col">
+		<ul class="polls">
+			<h3>Designing and Launching Polls</h3>
+      	{{#each section.articles}}
+        	<li>       
+      			{{#is title "Creating a Poll"}}
+          		{{#if promoted}}
+          			<span id="star" data-title="{{t 'promoted'}}">★</span>
+        			{{/if}}
+      				<a href="{{url}}">{{title}}</a>
+      			{{/is}}
+    			</li>
+      		<li>  
+          	{{#is title "Effective Poll Questions"}}
+        			{{#if promoted}}
+          			<span id="star" data-title="{{t 'promoted'}}">★</span>
+        			{{/if}}
+      				<a href="{{url}}">{{title}}</a>
+      			{{/is}}
+      		</li>
+      		<li>  
+          	{{#is title "eNPS Polls"}}
+        			{{#if promoted}}
+          			<span id="star" data-title="{{t 'promoted'}}">★</span>
+        			{{/if}}
+      				<a href="{{url}}">{{title}}</a>
+      			{{/is}}
+      		</li>
+      		<li>  
+          	{{#is title "Managing Polls"}}
+        			{{#if promoted}}
+          			<span id="star" data-title="{{t 'promoted'}}">★</span>
+        			{{/if}}
+      				<a href="{{url}}">{{title}}</a>
+      			{{/is}}
+      		</li>
+      		<li>  
+          	{{#is title "Polls Reports"}}
+        			{{#if promoted}}
+          			<span id="star" data-title="{{t 'promoted'}}">★</span>
+        			{{/if}}
+      				<a href="{{url}}">{{title}}</a>
+      			{{/is}}
+      		</li>
+      {{/each}}
+  	</ul>
+    
+  	<ul class="implementation">
+			<h3>Setting Up Real-Time Feedback</h3>
+      	{{#each section.articles}}
+        	<li>       
+      			{{#is title "Uninstalling the Reflektive Application for Mac"}}
+          		{{#if promoted}}
+          			<span id="star" data-title="{{t 'promoted'}}">★</span>
+        			{{/if}}
+      				<a href="{{url}}">{{title}}</a>
+      			{{/is}}
+    			</li>
+      		<li>  
+          	{{#is title "Setting Up Real-Time Feedback"}}
+        			{{#if promoted}}
+          			<span id="star" data-title="{{t 'promoted'}}">★</span>
+        			{{/if}}
+      				<a href="{{url}}">{{title}}</a>
+      			{{/is}}
+      		</li>
+      {{/each}}
+  	</ul>
+		<!-- Launching sub-section -->
+		<ul class="launching">
+      <h3>Launching Real-Time Feedback</h3>
+         {{#each section.articles}}
+      		<li>
+           	{{#is title "How do I launch Real-Time Feedback to my employees?"}}
+              {{#if promoted}}
+                <span id="star" data-title="{{t 'promoted'}}">★</span>
+              {{/if}}
+            	<a href="{{url}}">{{title}}</a>
+            {{/is}}
+          </li>
+    		{{/each}}
+   </ul>
+  </div>
+  <div class="col">
+		<ul class="driving-participation">
+			<h3>Driving Real-Time Feedback Participation</h3>
+	 			{{#each section.articles}}
+        	<li>
+           	{{#is title "How do I train managers on Real-Time Feedback?"}}
+              {{#if promoted}}
+                <span id="star" data-title="{{t 'promoted'}}">★</span>
+              {{/if}}
+            	<a href="{{url}}">{{title}}</a>
+            {{/is}}
+          </li>	
+    		{{/each}}
+   </ul>
+
+		<ul class="better-culture">
+			<h3>Analyzing Employee Feedback</h3>
+	 			{{#each section.articles}}
+        	<li>
+     			 {{#is title "Real-Time Feedback Reports"}}
+          	{{#if promoted}}
+          		<span id="star" data-title="{{t 'promoted'}}">★</span>
+       		  {{/if}}
+      			<a href="{{url}}">{{title}}</a>
+      		 {{/is}}
+    			</li>
+      	{{/each}}
+   	</ul>
+		<ul class="about">
+			<h3>About Real-Time Feedback</h3>
+	 			{{#each section.articles}}
+        	<li>
+     			 {{#is title "Why would I want a Peer Bonus system?"}}
+          	{{#if promoted}}
+          		<span id="star" data-title="{{t 'promoted'}}">★</span>
+       		  {{/if}}
+      			<a href="{{url}}">{{title}}</a>
+      		 {{/is}}
+    			</li>
+      		<li>
+     			 {{#is title "How do Reflektive Peer Bonuses work?"}}
+          	{{#if promoted}}
+          		<span id="star" data-title="{{t 'promoted'}}">★</span>
+       		  {{/if}}
+      			<a href="{{url}}">{{title}}</a>
+      		 {{/is}}
+    			</li>
+      		<li>
+     			 {{#is title "How much does a Peer Bonus system cost?"}}
+          	{{#if promoted}}
+          		<span id="star" data-title="{{t 'promoted'}}">★</span>
+       		  {{/if}}
+      			<a href="{{url}}">{{title}}</a>
+      		 {{/is}}
+    			</li>
+      		<li>
+     			 {{#is title "What types of Real-Time Feedback can employees send?"}}
+          	{{#if promoted}}
+          		<span id="star" data-title="{{t 'promoted'}}">★</span>
+       		  {{/if}}
+      			<a href="{{url}}">{{title}}</a>
+      		 {{/is}}
+    			</li>
+      	{{/each}}
+   	</ul>
+  </div>
+	{{/is}}
+{{/is}}
+
+<!--h3> Other Articles</h3>
+
+  <ul class="article-list">
+    {{!{{#each section.articles}}
+      <li {{!{{#if promoted}} class="article-promoted" {{!{{/if}}>
+        {{!{{#if promoted}}
+          <span data-title="{{!{{t 'promoted'}}">★</span>
+        {{!{{/if}}
+        <a href="{{!{{url}}">{{!{{title}}</a>
+      </li>
+    
+    {{!{{/each}}
+  </ul>
+{{!{{else}}
+  <i class="section-empty">
+    <a href="{{!{{section.url}}">{{!{{t 'empty'}}</a>
+  </i-->
+{{!{{/if}}
+
+{{pagination}}
+  
+</div>

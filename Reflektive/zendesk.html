@@ -1,9 +1,11 @@
+<div id="search-background">
 <div class="intro-title">What do you need help with?</div>
 <section id="search-section" class="hero-unit search-box">
   <div class="container-inner">
   {{search}}
   </div>
 </section>
+</div>
 
 <br />
 <br />
@@ -12,17 +14,19 @@
   {{#if categories}}
     <div class="category-tree"> 
       <!--div class="journey-row">
+      <!-- I am a... -->
+      <!-- p id="chooseJourney"> I am a... </p -->
       <!-- Start of Admin, Manager and Employee Journeys -->
       {{#each categories}}
         {{#if ../has_multiple_categories}}  
           
           <!-- This is the Admin Journey Category -->
-          {{#is name "Admin (HIDDEN)"}}
+          {{#is name "Admin"}}
             <!-- Journey box contains button and links at bottom -->
             <section class="journey">
               <!-- Button -->
               <a class="category-button" href="{{url}}">
-                <h2 class="button-title">{{name}}</h2>
+                <h2 class="button-title">I am an {{name}}</h2>
               </a>
               <!-- Promoted articles -->
               <div class="FAQs">
@@ -34,7 +38,7 @@
                       {{#each articles}}
                         {{#if promoted}}
                           <div><span id="star" data-title="{{t 'promoted'}}">★</span>
-                            <a href="{{url}}">{{title}}</a></div>
+                            <a class="home-articles" href="{{url}}">{{title}}</a></div>
                         {{/if}}    
                       {{/each}}
                     {{/if}}
@@ -46,10 +50,10 @@
           {{/is}}
           
           <!-- This is the Manager Journey Category -->
-          {{#is name "Manager (HIDDEN)"}}
+          {{#is name "Manager"}}
             <section class="journey">
               <a class="category-button" href="{{url}}">
-                <h2 class="button-title">{{name}}</h2>
+                <h2 class="button-title">I am a {{name}}</h2>
               </a> 
               <div class="FAQs">
               {{#each sections}}
@@ -58,7 +62,7 @@
                     {{#each articles}}
                       {{#if promoted}}
                         <span id="star" data-title="{{t 'promoted'}}">★</span>
-                        <a href="{{url}}">{{title}}</a>
+                        <a class="home-articles" href="{{url}}">{{title}}</a>
                       {{/if}}
                     {{/each}}
                   {{/if}}
@@ -70,10 +74,10 @@
           {{/is}}
         
           <!-- This is the Employee Journey Category -->
-          {{#is name "Employee (HIDDEN)"}}
+          {{#is name "Employee"}}
             <section class="journey">
               <a class="category-button" href="{{url}}">
-                <h2 class="button-title">{{name}}</h2>
+                <h2 class="button-title">I am an {{name}}</h2>
               </a>
               <div class="FAQs">
               {{#each sections}}
@@ -82,7 +86,7 @@
                     {{#each articles}}
                       {{#if promoted}}
                         <span id="star" data-title="{{t 'promoted'}}">★</span>
-                        <a href="{{url}}">{{title}}</a>
+                        <a class="home-articles" href="{{url}}">{{title}}</a>
                       {{/if}}  
                     {{/each}}
                   {{/if}}
@@ -100,9 +104,9 @@
       <!-- Start of Resources and Announcements area -->
       {{#each categories}}
         <!-- Announcements category -->
-        {{#is name "Announcements (HIDDEN)"}}
+        {{#is name "Announcements"}}
           <div id="announcements">
-            <h2><a href="{{url}}">{{name}}</a></h2>
+            <h2 class="page-header"><a class="colorBlack" href="{{url}}">{{name}}</a></h2>
             <!-- Sections under Announcements -->
             {{#each sections}}
               <section class="section">
@@ -113,7 +117,7 @@
                       <span class="visibility-internal-icon"></span>
                     </span>
                    {{/if}}
-                  <a id="homepage-section" href="{{url}}">{{name}}</a>
+                  <a href="{{url}}"><p class="homepage-section">{{name}}</p></a>
                 </h3>
       <!-- /section -->
                 <!-- Articles under each section -->
@@ -125,7 +129,7 @@
                         {{#if promoted}}
                           <span data-title="{{t 'promoted'}}">★</span>
                         {{/if}}
-                        <a href="{{url}}">{{title}}</a>
+                        <a class="home-articles" href="{{url}}">{{title}}</a>
                       </li>
                     {{/each}}
                   </ul>
@@ -160,18 +164,18 @@
      </div>
       
       <!-- General Resources Category -->
-      {{#is name "General Resources (HIDDEN)"}}
+      {{#is name "General Resources"}}
         <div id="resources">
-          <h2><a href="{{url}}">{{name}}</a></h2>
+          <h2 class="page-header"><a class="colorBlack" href="{{url}}">{{name}}</a></h2>
           {{#each sections}}
             <section class="section">
-              <h3>
+              <h3 class="homepage-section">
                 {{#if internal}}
                    <span class="visibility-internal" data-title="{{t 'internal'}}">
                      <span class="visibility-internal-icon"></span>
                    </span>
                 {{/if}}
-                  <a id="homepage-section" href="{{url}}">{{name}}</a>
+                <a href="{{url}}"><p class="homepage-section">{{name}}</p></a>
               </h3>    
       <!-- /section -->
        
@@ -182,7 +186,7 @@
                        {{#if promoted}}
                          <span data-title="{{t 'promoted'}}">★</span>
                        {{/if}}
-                       <a href="{{url}}">{{title}}</a>
+                       <a class="home-articles" href="{{url}}">{{title}}</a>
                      </li>
                    {{/each}}
                  </ul>

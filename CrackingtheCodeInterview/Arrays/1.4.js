@@ -19,7 +19,13 @@
 // 	return true;
 // }
 
-var str1 = "aaa";
-var str2 = "aba";
+// var str1 = "aaa";
+// var str2 = "aba";
 
-console.log(anagram(str1, str2));
+// console.log(anagram(str1, str2));
+
+function replaceString(str){
+	return str.split(' ').join("%20");
+}
+
+console.log(replaceString("hello hello"));

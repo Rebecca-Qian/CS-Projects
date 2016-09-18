@@ -22,7 +22,7 @@
 				callback(xmlHttp.responseText);
 		};
 		xmlHttp.open("POST", url, true);
-		xmlHttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+		xmlHttp.setRequestHeader("Content-Type", "application/json");
 		xmlHttp.send(JSON.stringify(payload));
 	}
 

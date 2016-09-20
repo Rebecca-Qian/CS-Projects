@@ -4,9 +4,9 @@
   {{search}}
 </nav>
 
-  <h1 class="page-header"><b>Support for {{category.name}}s</b></h1>
-
+  <div class="border"></div>
 {{#is category.description "persona"}}
+   <h1><b>Support for {{category.name}}s</b></h1>
 
   <div class="section-tree">
     {{#each sections}}
@@ -18,20 +18,53 @@
               <span class="visibility-internal-icon"></span>
             </span>
           {{/if}}
-          <p id="section-name">{{name}}</p>
+              <div id="section-name">
+               {{#is name "Real-Time Feedback"}}
+                  <div class="section-icons"><i class="fa fa-comments-o fa-3x" aria-hidden="true"></i></div>
+               {{/is}}
+               {{#is name "Utilizing Check-Ins for Development"}}
+                  <div class="section-icons"><i class="fa fa-calendar-check-o fa-3x" aria-hidden="true"></i></div>
+               {{/is}}
+               {{#is name "Establishing a Goal-Oriented Culture"}}
+                  <div class="section-icons"><i class="fa fa-trophy fa-3x" aria-hidden="true"></i></div>
+               {{/is}}
+               {{#is name "Launching Performance Reviews"}}
+                  <div class="section-icons"><i class="fa fa-rocket fa-3x" aria-hidden="true"></i></div>
+               {{/is}}
+               {{#is name "Integration"}}
+                  <div class="section-icons"><i class="fa fa-wrench fa-3x" aria-hidden="true"></i></div>
+               {{/is}}
+               {{#is name "Account Settings"}}
+                  <div class="section-icons"><i class="fa fa-cogs fa-3x" aria-hidden="true"></i></div>
+               {{/is}}
+               {{#is name "Account Management"}}
+                  <div class="section-icons"><i class="fa fa-book fa-3x" aria-hidden="true"></i></div>
+               {{/is}}
+               {{#is name "Best Practices"}}
+                  <div class="section-icons"><i class="fa fa-comments-o fa-3x" aria-hidden="true"></i></div>
+               {{/is}}
+              {{name}}
+              </div>
         </h3>
             </a>
         <!--p id="description">{{!{{description}}</p-->
 
        {{#if articles}}
+       <table>
         {{#each articles}}
           {{#if promoted}}
-              <div>
-              <span data-title="{{t 'promoted'}}">★</span>
-              <a class="colorBlack" href="{{url}}">{{title}}</a>
-              </div>
+            
+              
+                            <tr><td><span id="star" data-title="{{t 'promoted'}}">★</span></td>
+                            <td><a class="colorBlack" href="{{url}}">{{title}}</a></td></tr>
+                           
+              <!--div>
+              <span data-title="{{!{{t 'promoted'}}">★</span>
+              <a class="colorBlack" href="{{!{{url}}">{{!{{title}}</a>
+              </div-->
           {{/if}}
         {{/each}}
+       </table>
      {{/if}}
                       
      
@@ -56,18 +89,19 @@
           <a href="{{!{{url}}">{{!{{t 'empty'}}</a>
         </i-->
       {{!{{/if}}
-      	</section>
+        </section>
       
   {{!{{else}}
     <!--i class="category-empty">
       <a href="{{!{{category.url}}">{{!{{t 'empty'}}</a>
     </i-->
-  		{{/each}}
-		</div>
-	{{/is}}
+      {{/each}}
+    </div>
+  {{/is}}
   
   {{#is category.description "other"}}
-  	<div class="section-tree">
+  <h1 class="page-header"><b>{{category.name}}</b></h1>
+    <div class="section-tree">
     {{#each sections}}
      <section class="section">
        <a href="{{url}}">
@@ -84,7 +118,7 @@
 
        {{#if articles}}
         {{#each articles}}
-        	<li {{#if promoted}} class="article-promoted" {{/if}}>
+          <li {{#if promoted}} class="article-promoted" {{/if}}>
              {{#if promoted}}
                 <span data-title="{{t 'promoted'}}">★</span>
              {{/if}}
@@ -96,5 +130,5 @@
       {{/each}}
   </div>
    {{/is}}
-  	
+    
 </div>

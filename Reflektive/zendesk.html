@@ -26,6 +26,7 @@
             <section class="journey">
               <!-- Button -->
               <a class="category-button" href="{{url}}">
+                <div id="icons"><i class="fa fa-lock fa-5x icons" aria-hidden="true"></i></div>
                 <h2 class="button-title">I am an {{name}}</h2>
               </a>
               <!-- Promoted articles -->
@@ -35,12 +36,14 @@
                   <!-- Only finds articles from the first Section -->
                   {{#is name "Real-Time Feedback"}}
                     {{#if articles}}
-                      {{#each articles}}
-                        {{#if promoted}}
-                          <div><span id="star" data-title="{{t 'promoted'}}">★</span>
-                            <a class="home-articles" href="{{url}}">{{title}}</a></div>
-                        {{/if}}    
-                      {{/each}}
+                      <table>
+                        {{#each articles}}
+                          {{#if promoted}}
+                            <tr><td><span id="star" data-title="{{t 'promoted'}}">★</span></td>
+                            <td><a class="home-articles" href="{{url}}">{{title}}</a></td></tr>
+                          {{/if}}    
+                        {{/each}}
+                      </table>
                     {{/if}}
                   {{/is}}
                 {{/each}}
@@ -53,18 +56,21 @@
           {{#is name "Manager"}}
             <section class="journey">
               <a class="category-button" href="{{url}}">
+                <div id="icons"><i class="fa fa-briefcase fa-5x icons" aria-hidden="true"></i></div>
                 <h2 class="button-title">I am a {{name}}</h2>
               </a> 
               <div class="FAQs">
               {{#each sections}}
                 {{#is name "Real-Time Feedback"}}
                   {{#if articles}}
-                    {{#each articles}}
-                      {{#if promoted}}
-                        <span id="star" data-title="{{t 'promoted'}}">★</span>
-                        <a class="home-articles" href="{{url}}">{{title}}</a>
-                      {{/if}}
-                    {{/each}}
+                      <table>
+                        {{#each articles}}
+                          {{#if promoted}}
+                            <tr><td><span id="star" data-title="{{t 'promoted'}}">★</span></td>
+                            <td><a class="home-articles" href="{{url}}">{{title}}</a></td></tr>
+                          {{/if}}    
+                        {{/each}}
+                      </table>
                   {{/if}}
                 {{/is}}
               {{/each}}
@@ -77,18 +83,21 @@
           {{#is name "Employee"}}
             <section class="journey">
               <a class="category-button" href="{{url}}">
+                <div id="icons"><i class="fa fa-user fa-5x icons" aria-hidden="true"></i></div>
                 <h2 class="button-title">I am an {{name}}</h2>
               </a>
               <div class="FAQs">
               {{#each sections}}
                 {{#is name "Real-Time Feedback"}}
                   {{#if articles}}
-                    {{#each articles}}
-                      {{#if promoted}}
-                        <span id="star" data-title="{{t 'promoted'}}">★</span>
-                        <a class="home-articles" href="{{url}}">{{title}}</a>
-                      {{/if}}  
-                    {{/each}}
+                      <table>
+                        {{#each articles}}
+                          {{#if promoted}}
+                            <tr><td><span id="star" data-title="{{t 'promoted'}}">★</span></td>
+                            <td><a class="home-articles" href="{{url}}">{{title}}</a></td></tr>
+                          {{/if}}    
+                        {{/each}}
+                      </table>
                   {{/if}}
                 {{/is}}
               {{/each}}
@@ -105,8 +114,9 @@
       {{#each categories}}
         <!-- Announcements category -->
         {{#is name "Announcements"}}
-          <div id="announcements">
-            <h2 class="page-header"><a class="colorBlack" href="{{url}}">{{name}}</a></h2>
+            <div id="announcements" class="col">
+              <div class="border"></div>
+              <h2><a class="colorBlack" href="{{url}}">{{name}}</a></h2>
             <!-- Sections under Announcements -->
             {{#each sections}}
               <section class="section">
@@ -165,8 +175,9 @@
       
       <!-- General Resources Category -->
       {{#is name "General Resources"}}
-        <div id="resources">
-          <h2 class="page-header"><a class="colorBlack" href="{{url}}">{{name}}</a></h2>
+        <div id="resources" class="col">
+          <div class="border"></div>
+            <h2><a class="colorBlack" href="{{url}}">{{name}}</a></h2>
           {{#each sections}}
             <section class="section">
               <h3 class="homepage-section">

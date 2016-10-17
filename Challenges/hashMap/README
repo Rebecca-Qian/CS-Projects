@@ -1,0 +1,40 @@
+
+Rebecca Qian
+KPCB Fellows Application
+09-30-2016
+
+Challenge Specifications:
+
+Implement a fixed-size hash map that associates string keys with arbitrary
+data object references (without copying the object), providing the following:
+- constructor(size): return an instance of the class with pre-allocated space
+  for the given number of objects.
+- boolean set(key, value): stores the given key/value pair in the hash map.
+  Returns a boolean value indicating success / failure of the operation.
+- get(key): return the value associated with the given key, or null if no
+  value is set.
+- delete(key): delete the value associated with the given key, returning the
+  value on success or null if the key has no value.
+- float load(): return a float value representing the load factor
+  (`(items in hash map)/(size of hash map)`) of the data structure. Since the
+  size of the dat structure is fixed, this should never be greater than 1.
+
+==========
+
+This directory contains the following:
+
+- Makefile
+- hashmap.h: a specification of the hashmap data structure that
+  uses linked list buckets to handle collisions
+- hashmap.c: implementation of hashmap and buckets
+- evidence_hashmap.c: test file for functions constructor, set,
+  get, delete, load and helper functions
+- README (this file)
+
+==========
+
+To run the tests:
+
+$ clang -Wall -o hashmap hashmap.c evidence_hashmap.c
+
+$ ./hashmap

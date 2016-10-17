@@ -1,3 +1,25 @@
+// Import file system module
+fs = require('fs');
+//fs.readFile(file, [encoding], [callback]);
+
+//require('path').dirname(require.main.filename);
+var addr = process.cwd() + "/test.txt";
+//console.log("The current working directory is " + addr);
+
+// fs.readFile(path.resolve(__dirname, 'settings.json'), 'UTF-8', function(err, data) {
+// 	if (err) {
+// 		throw err;
+// 	}
+// 	console.log(data);
+// });
+
+fs.readFile(addr, 'utf8', function(err, data) {
+	if (err) {
+		throw err;
+	}
+	console.log(data);
+})
+
 // Get first 2 command line inputs
 var inputs = process.argv.slice(2);
 console.log('Inputs: ', inputs);
@@ -33,4 +55,4 @@ Processor.parse = function() {
 	}
 }
 
-Processor.parse();
+// Processor.parse();

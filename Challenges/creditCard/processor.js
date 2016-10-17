@@ -8,7 +8,7 @@ var Processor = {};
 Processor.creditCard = function (name, cardNumber, limit) {
 	this.name = name;
 	this.number = cardNumber;
-	this.limit = limit;
+	this.number = parseFloat(limit.replace(/[^0-9-.]/g, ''));
 }
 
 Processor.parse = function() {

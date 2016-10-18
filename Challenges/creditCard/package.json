@@ -1,0 +1,11 @@
+{
+  "name": "creditCard",
+  "version": "1.0.0",
+  "description": "Credit card processor",
+  "main": "processor.js",
+  "scripts": {
+    "test": " \"node processor testA.txt\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT"
+}

@@ -33,6 +33,7 @@ Processor.creditCard = function (name, cardNumber, limit) {
 	this.name = name;
 	this.number = cardNumber;
 	this.limit = parseFloat(limit.replace(/[^0-9-.]/g, ''));
+	this.balance = 0;
 }
 
 // Takes in a single transaction with
@@ -52,48 +53,97 @@ Processor.parse = function(transaction) {
 		case 'add' :
 			//console.log("add");
 			// Creates new Credit Card Account
-			this[name] = new this.creditCard(name, number, value);
-			console.log(this[name]);
-			//console.log(this);
+			if (this.verify(number)) {
+				this[name] = new this.creditCard(name, number, value);
+				console.log(this[name]);
+				//console.log(this);
+			} else {
+				console.log("error");
+			}
 			break;
 		case 'charge' :
 			//console.log("charge");
-			this[name].limit = this[name].limit - parseFloat(number.replace(/[^0-9-.]/g, ''));
-			console.log(this[name]);
+			if (this[name]) {
+				var charge = this[name].balance + parseFloat(number.replace(/[^0-9-.]/g, ''));
+				this[name].balance = (charge > this[name].limit ? this[name].limit : charge);
+				console.log(this[name]);
+			} else {
+				console.log("error");
+			}
 			break;
 		case 'credit' :
 			//console.log("credit");
-			this[name].limit = this[name].limit - parseFloat(number.replace(/[^0-9-.]/g, ''));
-			console.log(this[name]);
+			if (this[name]) {
+				this[name].balance -= parseFloat(number.replace(/[^0-9-.]/g, ''));
+				console.log(this[name]);
+			} else {
+				console.log("error");
+			}
 			break;
 	}
+}
+
+Processor.summary = function() {
+	console.log(this.Lisa.name + ": " + this.Lisa.balance);
+	console.log(this.Tom.name + ": " + this.Tom.balance);
+}
+
+String.prototype.replaceAt=function(index, character) {
+    return this.substr(0, index) + character + this.substr(index+character.length);
 }
 
 Processor.verify = function(cardNumber) {
 	var account = cardNumber;
 	var len = account.length;
-	var sum;
-	// Double even digits
-	//var num;
-	for (var i = 1; i < len; i += 2) {
+	var sum = 0;
+
+	for (var i = len - 2; i >= 0; i -= 2) {
 		var num = account[i] * 2;
 		if (num > 9) {
 			num = 1 + (num - 10);
 		}
-		account[i] = num; // ((num > 9) ? (num = 1 + (num - 10)) : num);
-		console.log(num);
-		console.log("account number is " + account[i]);
+		account = account.replaceAt(i, num.toString());
+		//console.log(num);
+		//console.log("account number is " + account);
 	};
 
-	for (var i = 0; i < len; i++) {
-		sum += parseInt(account.charAt(i), 10);
+	for (var j = 0; j < len; j++) {
+		sum += Number(account[j]);
 	};
+
+	//console.log(sum);
 
 	if ((sum % 10) == 0) {
 		return true;
 	}
 	return false;
-}
+};
+
+// Processor.verify = function(cardNumber) {
+// 	var account = cardNumber;
+// 	var len = account.length;
+// 	var sum;
+// 	// Double even digits
+// 	//var num;
+// 	for (var i = 1; i < len; i += 2) {
+// 		var num = account[i] * 2;
+// 		if (num > 9) {
+// 			num = 1 + (num - 10);
+// 		}
+// 		account[i] = num; // ((num > 9) ? (num = 1 + (num - 10)) : num);
+// 		console.log(num);
+// 		console.log("account number is " + account[i]);
+// 	};
+
+// 	for (var i = 0; i < len; i++) {
+// 		sum += parseInt(account.charAt(i), 10);
+// 	};
+
+// 	if ((sum % 10) == 0) {
+// 		return true;
+// 	}
+// 	return false;
+// }
 
 // console.log("double account number: " + num);
 // console.log("adding digits " + num);
@@ -127,6 +177,7 @@ readStream.on('data', function(chunk) {
 readStream.on('end', function() {
    // console.log(data);
     console.log("end");
+    Processor.summary();
 });
 
 
@@ -144,5 +195,5 @@ readStream.on('end', function() {
 //   });
 
 // Processor.parse();
-console.log(Processor.verify('79927398711'));
-console.log(Processor.verify('79927398713'));
+ // console.log(Processor.verify('4212121212121212'));
+// console.log(Processor.verify('79927398713'));

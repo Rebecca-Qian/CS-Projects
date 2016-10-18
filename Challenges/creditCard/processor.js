@@ -1,8 +1,45 @@
 // Import file system module
 var fs = require('fs');
+const readline = require('readline');
 
-var addr = process.cwd() + "/test.txt";
+// Parse test file input
+var testInput = process.argv.splice(2);
+console.log(testInput);
+var inputSrc = (testInput ? process.stdin : readStream);
 
+var addr = process.cwd() + "/" + testInput;
+
+// Create read stream with test file input
+var readStream = fs.createReadStream(addr);
+
+const rl = readline.createInterface({
+  input: inputSrc, //readStream, 
+  output: process.stdout,
+  terminal: false
+});
+
+rl.on('line', function(line) {
+	console.log(line);
+})
+
+var data = '';
+
+readStream.on('data', function(chunk) {
+    data += chunk;
+    // console.log(chunk.toString());
+    var lines = data.split('\n');
+
+    for (var i = 0; i < lines.length; i++) {
+    	Processor.parse(lines[i]);	
+    };
+});
+
+readStream.on('end', function() {
+    console.log("Summary: ");
+    Processor.summary();
+});
+
+// Initialize Credit Card Processor
 var Processor = {};
 
 // Method to create new Account
@@ -16,8 +53,8 @@ Processor.creditCard = function (name, cardNumber, limit) {
 
 Processor.accounts = {};
 
-// Executes an add, charge or credit transaction
-// Parses a single line from text file with
+// Execute an add, charge or credit transaction
+// Parse a single line from text file with
 // 3 or 4 inputs
 Processor.parse = function(transaction) {
 	var inputs = transaction.split(' '),
@@ -28,44 +65,39 @@ Processor.parse = function(transaction) {
 	switch(inputs[0].toLowerCase()) {
 		case 'add' :
 			// Creates new valid Credit Card Account
-			if (this.verify(number)) {
-				this.accounts[name] = new this.creditCard(name, number, value);
-				console.log(this.accounts[name]);
-			} else {
-				console.log("error");
+			this.accounts[name] = new this.creditCard(name, number, value);
+			if (!this.verify(number)) {
+				this.accounts[name].balance = "error";
 			}
 			break;
 
 		case 'charge' :
 			// Caps charge at credit card limit
-			if (this.accounts[name]) {
+			if (this.accounts[name].balance != "error") {
 				var charge = this.accounts[name].balance + parseFloat(number.replace(/[^0-9-.]/g, ''));
 				if (charge < this.accounts[name].limit) {
 					this.accounts[name].balance = charge;
 				}
-				console.log(this.accounts[name]);
-			} else {
-				console.log("error");
 			}
 			break;
 
 		case 'credit' :
-			if (this.accounts[name]) {
+			if (this.accounts[name].balance != "error") {
 				this.accounts[name].balance -= parseFloat(number.replace(/[^0-9-.]/g, ''));
-				console.log(this.accounts[name]);
-			} else {
-				console.log("error");
 			}
 			break;
 	}
 }
 
-// Prints summary of records
+// Print summary of records
+// In alphabetical order
 Processor.summary = function() {
-	for (var acc in this.accounts) {
-		if (this.accounts.hasOwnProperty(acc)) {
-			console.log(acc + ": " + this.accounts[acc].balance);
-		}
+	var summary = Object.keys(this.accounts).sort(),
+		len = summary.length;
+
+	for (var i = 0; i < len; i++) {
+		var name = summary[i];
+		console.log(name + ": " + this.accounts[name].balance);
 	}
 }
 
@@ -104,26 +136,3 @@ Processor.verify = function(cardNumber) {
 	}
 	return false;
 };
-
-// Creates read stream with test file input
-var readStream = fs.createReadStream(addr);
-
-var data = '';
-
-readStream.on('data', function(chunk) {
-    data += chunk;
-    // console.log(chunk.toString());
-    // console.log("hello");
-    var lines = data.split('\n');
-
-    for (var i = 0; i < lines.length; i++) {
-    	//console.log(lines[i]);
-    	Processor.parse(lines[i]);	
-    };
-});
-
-readStream.on('end', function() {
-   // console.log(data);
-    console.log("Summary: ");
-    Processor.summary();
-});

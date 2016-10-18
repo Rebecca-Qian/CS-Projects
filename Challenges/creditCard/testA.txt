@@ -1,0 +1,26 @@
+Add Amy 4532098687745342 $5000
+Charge Amy $500
+Add Amanda 378282246310005 $1000
+Add Matt 378734493671000 $2000
+Charge Amanda $800
+Charge Amanda $200
+Add Nick 3088860703212536 $5000
+Add Harry 6011000990139424 $3000
+Credit Matt $100
+Credit Nick $200
+Add Morgan 79927398714 $9000
+Credit Harry $200
+Add Zander 5555555555554444 $1100
+Add Bob 38520000023237 $800
+Add Sylvia 4012888888881881 $2000
+Credit Zander $200
+Charge Bob $799
+Charge Sylvia $1200
+Add Nelly 5893163313804853 $500
+Charge Bob $1
+Credit Sylvia $200
+Add Alex 4230211176550208 $9000
+Charge Nelly $800
+Charge Nelly $200
+Charge Matt $20
+Charge Zander $900

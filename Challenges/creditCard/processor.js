@@ -74,30 +74,32 @@ Processor.verify = function(cardNumber) {
 	var len = account.length;
 	var sum;
 	// Double even digits
-	var num;
+	//var num;
 	for (var i = 1; i < len; i += 2) {
-		console.log("account number is " + account[i]);
-		num = account[i] * 2;
-		console.log("double account number: " + num);
+		var num = account[i] * 2;
 		if (num > 9) {
 			num = 1 + (num - 10);
 		}
 		account[i] = num; // ((num > 9) ? (num = 1 + (num - 10)) : num);
-		console.log("adding digits " + num);
-		console.log("final account number: " + account[i]);
+		console.log(num);
+		console.log("account number is " + account[i]);
 	};
-	console.log(account);
 
 	for (var i = 0; i < len; i++) {
 		sum += parseInt(account.charAt(i), 10);
 	};
-	console.log(account);
 
 	if ((sum % 10) == 0) {
 		return true;
 	}
 	return false;
 }
+
+// console.log("double account number: " + num);
+// console.log("adding digits " + num);
+// 		console.log("final account number: " + account[i]);
+// console.log(account);
+// 	console.log(account);
 
 var readStream = fs.createReadStream(addr);
 //readStream.pipe(process.stdout);

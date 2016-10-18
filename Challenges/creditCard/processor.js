@@ -32,7 +32,7 @@ var Processor = {};
 Processor.creditCard = function (name, cardNumber, limit) {
 	this.name = name;
 	this.number = cardNumber;
-	this.number = parseFloat(limit.replace(/[^0-9-.]/g, ''));
+	this.limit = parseFloat(limit.replace(/[^0-9-.]/g, ''));
 }
 
 // Takes in a single transaction with
@@ -40,29 +40,64 @@ Processor.creditCard = function (name, cardNumber, limit) {
 Processor.parse = function(transaction) {
 	var inputs = transaction.split(' ');
 	 var name = inputs[1];
-	 console.log(name);
+	// console.log(name);
 	 var number = inputs[2];
+	// console.log(number);
+	 // number = parseFloat(number.replace(/[^0-9-.]/g, ''));
+	  //console.log(number);
 	 var value = inputs[3];
+	  //console.log(value);
 
 	switch(inputs[0].toLowerCase()) {
 		case 'add' :
-			console.log("add");
+			//console.log("add");
 			// Creates new Credit Card Account
 			this[name] = new this.creditCard(name, number, value);
 			console.log(this[name]);
-			console.log(this);
+			//console.log(this);
 			break;
 		case 'charge' :
-			console.log("charge");
-			this[name].limit = this[name].limit - number;
+			//console.log("charge");
+			this[name].limit = this[name].limit - parseFloat(number.replace(/[^0-9-.]/g, ''));
+			console.log(this[name]);
 			break;
 		case 'credit' :
 			//console.log("credit");
-			this[name].limit = this[name].limit - number;
+			this[name].limit = this[name].limit - parseFloat(number.replace(/[^0-9-.]/g, ''));
+			console.log(this[name]);
 			break;
 	}
 }
 
+Processor.verify = function(cardNumber) {
+	var account = cardNumber;
+	var len = account.length;
+	var sum;
+	// Double even digits
+	var num;
+	for (var i = 1; i < len; i += 2) {
+		console.log("account number is " + account[i]);
+		num = account[i] * 2;
+		console.log("double account number: " + num);
+		if (num > 9) {
+			num = 1 + (num - 10);
+		}
+		account[i] = num; // ((num > 9) ? (num = 1 + (num - 10)) : num);
+		console.log("adding digits " + num);
+		console.log("final account number: " + account[i]);
+	};
+	console.log(account);
+
+	for (var i = 0; i < len; i++) {
+		sum += parseInt(account.charAt(i), 10);
+	};
+	console.log(account);
+
+	if ((sum % 10) == 0) {
+		return true;
+	}
+	return false;
+}
 
 var readStream = fs.createReadStream(addr);
 //readStream.pipe(process.stdout);
@@ -78,11 +113,11 @@ var data = '';
 
 readStream.on('data', function(chunk) {
     data+=chunk;
-    console.log(data);
+    console.log(chunk.toString());
+    console.log("hello");
     var lines = data.split('\n');
-    for (var i = 0; i < lines; i++) {
-    	//console.log(lines[i]);
-    	console.log("hi");
+    for (var i = 0; i < lines.length; i++) {
+    	console.log(lines[i]);
     	Processor.parse(lines[i]);	
     };
 });
@@ -107,3 +142,5 @@ readStream.on('end', function() {
 //   });
 
 // Processor.parse();
+console.log(Processor.verify('79927398711'));
+console.log(Processor.verify('79927398713'));

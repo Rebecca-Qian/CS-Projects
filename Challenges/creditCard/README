@@ -1,0 +1,84 @@
+Credit Card Processor
+
+v1.0.0
+
+Overview & Design
+-----------------
+
+My Credit Card Processor reads an input file passed in command line
+arguments or STDIN and parses the file line by line. As the instructions
+are received, the processor executes each instruction, checking that
+card numbers are valid using the Luhn 10 algorithm. The processor denies
+charges and credits when the card number is invalid. When all instructions
+have been read and executed, the processor prints a summary of each account
+holder’s name and balance, printing “error” instead of balance for invalid
+accounts.
+
+I have designed the processor to be scalable.
+
+Why Javascript?
+---------------
+
+Javascript is an incredibly versatile language with specific features
+that allow us to create highly scalable software.
+
+Testing
+-------
+
+Running the Credit Card Processor requires Node v0.1.104 and beyond.
+Once Node is installed and up to date, you can create input files
+in the directory or run the given test cases.
+
+To run a test case:
+
+$ node processor [input file]
+
+or
+
+$ node processor < [input file]
+
+
+Examples :
+
+$ node processor testA.txt
+
+$ node processor < test.txt
+
+
+Installing Node.JS
+------------------
+
+Mac :
+
+If you're using the homebrew package manager, install with
+
+$ brew install node
+
+Otherwise,
+
+$ git clone git://github.com/ry/node.git
+cd node
+./configure
+make
+sudo make install
+
+
+Windows :
+
+If you already have cygwin installed, install these packages
+using setup.exe.
+
+devel -> openssl
+devel -> g++-gcc
+devel -> make
+python -> python
+devel -> git
+
+Then run these commands,
+
+git clone git://github.com/ry/node.git
+cd node
+./configure
+make
+sudo make install
+

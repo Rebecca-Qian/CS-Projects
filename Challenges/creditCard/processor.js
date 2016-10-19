@@ -1,10 +1,10 @@
 // Import file system module
-var fs = require('fs');
-var readline = require('readline');
+var fs = require('fs'),
+	readline = require('readline'),
+	testInput = process.argv.splice(2);
 
-// Parse test file input
-var testInput = process.argv.splice(2);
-console.log(testInput);
+// Readline Interface
+var rl;
 
 if (testInput[0]) {
 	var addr = process.cwd() + "/" + testInput;
@@ -12,41 +12,20 @@ if (testInput[0]) {
 	// Create read stream with test file input
 	var readStream = fs.createReadStream(addr);
 	rl = readline.createInterface({
-  		input: readStream,//inputSrc, //readStream, 
+  		input: readStream,
   		output: process.stdout,
   		terminal: false
   	});
 } else {
 	rl = readline.createInterface({
-		input: process.stdin,//inputSrc, //readStream, 
+		input: process.stdin, 
 		output: process.stdout,
 		terminal: false
 	});
 }
 
-//var inputSrc = (testInput ? readStream : process.stdin);
-
-var rl;
-
-// if (testInput) {
-// 	rl = readline.createInterface({
-//   		input: readStream,//inputSrc, //readStream, 
-//   		output: process.stdout,
-//   		terminal: false
-//   	});
-// } else {
-// 	rl = readline.createInterface({
-// 		input: process.stdin,//inputSrc, //readStream, 
-// 		output: process.stdout,
-// 		terminal: false
-// 	});
-// };
-
 rl.on('line', function(line) {
-	//console.log(line);
-	//for (var i = 0; i < lines.length; i++) {
-     	Processor.parse(line);	
-    // };
+	Processor.parse(line);
 }).on('error', function(e) {
 	console.log("error reading from input");
 });
@@ -55,29 +34,6 @@ rl.on('close', function() {
 	console.log("Summary: ");
 	Processor.summary();
 });
-
-// rl.on('end', function() {
-// 	rl.close();
-// 	console.log("Summary: ");
-// 	Processor.summary();
-// });
-
-// var data = '';
-
-// readStream.on('data', function(chunk) {
-//     data += chunk;
-//     // console.log(chunk.toString());
-//     var lines = data.split('\n');
-
-//     for (var i = 0; i < lines.length; i++) {
-//     	Processor.parse(lines[i]);	
-//     };
-// });
-
-// readStream.on('end', function() {
-//     console.log("Summary: ");
-//     Processor.summary();
-// });
 
 // Initialize Credit Card Processor
 var Processor = {};

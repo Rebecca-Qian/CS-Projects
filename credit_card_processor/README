@@ -1,0 +1,57 @@
+					Credit Card Processor v0.1.0
+
+Overview & Design
+-----------------
+
+My Credit Card Processor reads an input file passed in command line
+arguments or STDIN and parses the file line by line. As the instructions
+are received, the processor executes each instruction, checking that
+card numbers are valid and denying transactions on invalid accounts. When
+all instructions have been read and executed, the processor prints a summary
+of each account holder’s name and balance, printing “error” instead of
+balance for invalid accounts.
+
+A key design choice was to create a read stream, parsing input line by line
+and executing each line immediately. Read streams are an advantage of using
+Node.JS, because instead of waiting for the entire file to , Although there
+isn’t a significant performance gain for small test files, this design is
+scalable and would make a significant difference when data is sent over
+a server connection.
+
+
+Why Javascript?
+---------------
+
+Javascript is a versatile language with specific features that allow us to
+create highly scalable software. Read streams are an advantage of using
+Javascript and Node.JS, because instead of waiting to read the entire file to
+memory (which may be impossible in real life) before parsing data, we parse
+and execute each line sequentially.
+
+
+Testing
+-------
+
+Running the Credit Card Processor requires Node v0.1.104 and beyond.
+Once Node is installed and up to date, you can create input files
+in the directory or run the given test cases.
+
+To run a test case:
+
+$ node main [FILENAME]
+
+or
+
+$ node main < [FILENAME]
+
+
+To run the given test cases:
+
+$ npm test
+
+or
+
+$ node main testA.txt
+
+$ node main < test.txt
+

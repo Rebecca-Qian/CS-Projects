@@ -1,0 +1,11 @@
+{
+  "name": "creditCard",
+  "version": "0.1.0",
+  "description": "Credit card processor for Braintree Application",
+  "main": "main.js",
+  "scripts": {
+    "test": "node main testA.txt"
+  },
+  "author": "Rebecca Qian <rebeccaqian@uchicago.edu>",
+  "license": "MIT"
+}

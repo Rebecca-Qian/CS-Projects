@@ -6,4 +6,3 @@ Charge Tom $800
 Charge Lisa $7
 Credit Lisa $100
 Credit Quincy $200
-

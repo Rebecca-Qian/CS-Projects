@@ -6,14 +6,27 @@ var readline = require('readline');
 var testInput = process.argv.splice(2);
 console.log(testInput);
 
-var addr = process.cwd() + "/" + testInput;
+if (testInput[0]) {
+	var addr = process.cwd() + "/" + testInput;
 
-// Create read stream with test file input
-var readStream = fs.createReadStream(addr);
+	// Create read stream with test file input
+	var readStream = fs.createReadStream(addr);
+	rl = readline.createInterface({
+  		input: readStream,//inputSrc, //readStream, 
+  		output: process.stdout,
+  		terminal: false
+  	});
+} else {
+	rl = readline.createInterface({
+		input: process.stdin,//inputSrc, //readStream, 
+		output: process.stdout,
+		terminal: false
+	});
+}
 
-var inputSrc = (testInput ? readStream : process.stdin);
+//var inputSrc = (testInput ? readStream : process.stdin);
 
-// var rl;
+var rl;
 
 // if (testInput) {
 // 	rl = readline.createInterface({
@@ -28,12 +41,6 @@ var inputSrc = (testInput ? readStream : process.stdin);
 // 		terminal: false
 // 	});
 // };
-
-var rl = readline.createInterface({
-		input: process.stdin,//inputSrc, //readStream, 
-		output: process.stdout,
-		terminal: false
-	});
 
 rl.on('line', function(line) {
 	//console.log(line);

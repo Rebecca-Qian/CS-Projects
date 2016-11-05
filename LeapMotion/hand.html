@@ -186,20 +186,18 @@
 
 		}
 
-		//cameraControls.update(frame); 
-
 		renderer.render( scene, camera );
 		controls.update();
 		stats.update();
 
-		// for (var i = 0, len = frame.hands.length; i < len; i++) {
-	 //        hand = frame.hands[i];
-	 //        console.log(hand.pinchStrength);
-	 //        // if (hand.pinchStrength > 0.1) {
-	 //        // 	sphere.translateZ( 100 );
-	 //        // 	//sphere.scaleX(1.5);
-	 //        // }
-  //     	}
+		for (var i = 0, len = frame.hands.length; i < len; i++) {
+	        hand = frame.hands[i];
+	        console.log(hand.pinchStrength);
+	        if (hand.pinchStrength > 0.1) {
+	        	sphere.translateZ( 100 );
+	        	//sphere.scaleX(1.5);
+	        }
+      	}
 
 	}
 

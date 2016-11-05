@@ -10,6 +10,7 @@
 <script src=http://rawgit.com/mrdoob/three.js/dev/examples/js/controls/OrbitControls.js ></script>
 <script src=http://rawgit.com/mrdoob/three.js/dev/examples/js/libs/stats.min.js ></script>
 <script src=http://js.leapmotion.com/leap-0.6.4.js ></script>
+<script src="leapcontrol.js"></script>
 <script>
 
 	var baseBoneRotation = ( new THREE.Quaternion ).setFromEuler( new THREE.Euler( 0, 0, Math.PI / 2 ) );
@@ -36,7 +37,7 @@
 	// scene.add(sphere);
 
 	init();
-	Leap.loop( {background: true}, leapAnimate ).connect();
+	Leap.loop( {background: true, enableGestures: true}, leapAnimate ).connect();
 
 	function init() {
 
@@ -131,13 +132,29 @@
 
 	// creates coconut spheres
 	function newCoconut( meshes ) {
-		var geometry = new THREE.SphereGeometry( 1, 1, 1 );
-		var material = new THREE.MeshBasicMaterial();
-		var mesh = new THREE.Mesh( geometry, material );
-		meshes.push( mesh );
-
+		// var geometry = new THREE.SphereGeometry( 1, 1, 1 );
+		// var material = new THREE.MeshBasicMaterial();
+		// var mesh = new THREE.Mesh( geometry, material );
+		// meshes.push( mesh );
+		var sphere = new THREE.Mesh( geometry, material );
+		sphere.position.set( -20, 200, 40 );
+		sphere.castShadow = true;
+		sphere.receiveShadow = true;
+		sphereControls = new THREE.LeapObjectControls(camera, sphere);
 		return mesh;
 	}
+
+	var geometry = new THREE.SphereGeometry( 40 );
+		var material = new THREE.MeshBasicMaterial({
+			color: 0xffffff
+		});
+
+	var sphere = new THREE.Mesh( geometry, material );
+		sphere.position.set( -20, 200, 40 );
+		sphere.castShadow = true;
+		sphere.receiveShadow = true;
+		scene.add(sphere);
+		sphereControls = new THREE.LeapObjectControls(camera, sphere);
 
 	function leapAnimate( frame ) {
 
@@ -169,19 +186,20 @@
 
 		}
 
-		var geometry = new THREE.SphereGeometry( 40 );
-		var material = new THREE.MeshBasicMaterial({
-			color: 0xffffff
-		});
-		var sphere = new THREE.Mesh( geometry, material );
-		sphere.position.set( -20, 200, 40 );
-		sphere.castShadow = true;
-		sphere.receiveShadow = true;
-		scene.add(sphere);
+		//cameraControls.update(frame); 
 
 		renderer.render( scene, camera );
 		controls.update();
 		stats.update();
+
+		// for (var i = 0, len = frame.hands.length; i < len; i++) {
+	 //        hand = frame.hands[i];
+	 //        console.log(hand.pinchStrength);
+	 //        // if (hand.pinchStrength > 0.1) {
+	 //        // 	sphere.translateZ( 100 );
+	 //        // 	//sphere.scaleX(1.5);
+	 //        // }
+  //     	}
 
 	}
 

@@ -20,6 +20,8 @@
 	var coconutMeshes = [];
 
 	var stats, renderer, scene, camera, controls;
+	var colors = [0xffcc00, 0xffff66, 0x33cc33, 0x3399ff, 0x9999ff, 0xff66ff, 0xff5050, 0xffffff]
+	var index = 0;
 
 	// var radius = 50,
 	// 	segments = 16,
@@ -81,10 +83,10 @@
 
 // helpers
 		var gridHelper = new THREE.GridHelper( 200, 20 );
-		scene.add( gridHelper );
+		//scene.add( gridHelper );
 
 		var axisHelper = new THREE.AxisHelper( 200 );
-		scene.add( axisHelper );
+		//scene.add( axisHelper );
 
 		// initializes bottom plane
 		//var geometry = new THREE.BoxGeometry( 300, 20, 300 );
@@ -147,7 +149,7 @@
 
 	var geometry = new THREE.SphereGeometry( 40 );
 		var material = new THREE.MeshBasicMaterial({
-			color: 0xffffff
+			color: 0xFFCC66
 		});
 
 	var sphere = new THREE.Mesh( geometry, material );
@@ -167,9 +169,12 @@
               break;
           case "keyTap":
               console.log("Key Tap Gesture");
+              index = (index > 6? 0 : index + 1);
+              sphere.material.color.setHex(colors[index]);
               break;
           case "screenTap":
               console.log("Screen Tap Gesture");
+              //sphere.material.color = 0xffffff;
               break;
           case "swipe":
               console.log("Swipe Gesture");
@@ -217,7 +222,7 @@
    	 });
   	}
 
-
+  		//pointLight = new THREE.PointLight(0xFFFFFF, 1, 100000);
 		var countBones = 0;
 		var countArms = 0;
 
@@ -253,9 +258,24 @@
 		for (var i = 0, len = frame.hands.length; i < len; i++) {
 	        hand = frame.hands[i];
 	        console.log(hand.grabStrength);
-	        if (hand.pinchStrength > 0.5) {
+	        if (hand.pinchStrength > 0.3) {
 	        	//sphere.translateZ( 5 );
+	        	sphere.scale.set(0.7, 0.7, 0.7);
+	        } else if (hand.pinchStrength > 0.5) {
 	        	sphere.scale.set(0.5, 0.5, 0.5);
+	        } else if (hand.pinchStrength > 0.8) {
+	        	sphere.scale.set(0.3, 0.3, 0.3);
+	        } else {
+	        	sphere.scale.set(1, 1, 1);
+	        }
+
+	        if ((Math.abs(hand.palmPosition[0]) - Math.abs(sphere.position.x) < 20) &&
+	        	(Math.abs(hand.palmPosition[1]) - Math.abs(sphere.position.y) < 20) &&
+	        	(Math.abs(hand.palmPosition[2]) - Math.abs(sphere.position.x) < 20)) {
+	        	//sphere.scale.set(5, 5, 5);
+	         sphere.position.setX(hand.palmPosition[0]);
+	         sphere.position.setY(hand.palmPosition[1]);
+	         sphere.position.setZ(hand.palmPosition[2]-10);
 	        } else {
 	        	sphere.scale.set(1, 1, 1);
 	        }

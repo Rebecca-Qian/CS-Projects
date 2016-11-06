@@ -62,8 +62,9 @@
         hand = frame.hands[i];
         handString = concatData("hand_type", hand.type);
         handString += concatData("confidence", hand.confidence);
-        handString += concatData("pinch_strength", hand.pinchStrength);
+        handString += concatData("velocity", hand.PalmVelocity);
         handString += concatData("grab_strength", hand.grabStrength);
+        console.log(hand.PalmVelocity);
     
         handString += '<br>';
     
